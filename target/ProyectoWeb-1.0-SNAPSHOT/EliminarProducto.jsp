@@ -9,43 +9,67 @@
 <%@page import = "java.sql.*" %>
 <%@page import = "java.util.List" %>
 <%@page import = "java.util.ArrayList" %>
+<%@ page import="Logica.Producto" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="author" content="Joshua Correa Herrera" />
+        <meta name="description" content="Pagina Web y Sistema de Gestion de Tienda" />
+        <meta name="keywords" content="Tienda, sistema, web, desarrollo, venta" />
+        <meta name="copyright" content="Joshua Correa Herrera" />
         <title>Eliminar Prodcuto</title>
     </head>
-    <body>
-        
-        <%
-            ArrayList<String> productos_a_listar = (ArrayList<String>) request.getAttribute("lista_productos");
-            if(productos_a_listar != null && !productos_a_listar.isEmpty()) {
-        %>
-        
-        <h2>Lista de Productos</h2>
-        <ul>
-            <%
-                for(String producto: productos_a_listar){
-            %>
-            
-            <li>
-                <%= producto%>
-            </li>
-            
-            <% } %>
-        </ul>
-        
-        <% } %>
-        
-        <br />
-        <h3>Eliminar Producto</h3>
-        <form action="SvEliminarProducto" method="POST">
-            <label for="id_producto">ID del producto a eliminar:</label>
-            <input type="number" name="id_producto" id="id_producto" required />
-            <br />
-            <br />
-            <button type="submit">Elminar</button>
-        </form>
-    </body>
+<body>
+    <h2>Lista de productos</h2>
+    
+    <%
+        String mensaje = (String) request.getAttribute("mensaje");
+        if (mensaje != null) {
+    %>
+        <div style="color: blue; margin: 10px 0;">
+            <%= mensaje %>
+        </div>
+    <% } %>
+    
+    <%
+        List<Producto> lista_productos = (List<Producto>) request.getAttribute("lista_productos");
+        if (lista_productos != null && !lista_productos.isEmpty()) {
+    %>
+            <table border="1" style="width: 100%;">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Acción</th>
+                </tr>
+                <%
+                    for (Producto producto : lista_productos) {
+                %>
+                    <tr>
+                        <td><%= producto.getIdProducto() %></td>
+                        <td><%= producto.getNombreProducto() %></td>
+                        <td>$<%= producto.getPrecioProducto() %></td>
+                        <td><%= producto.getCantidadProducto() %></td>
+                        <td>
+                            <form action="SvEliminarProducto" method="POST" style="display: inline;">
+                                <input type="hidden" name="id_producto" value="<%= producto.getIdProducto() %>">
+                                <button type="submit" style="background: #dc3545; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+    <%
+        } else {
+    %>
+        <p>No hay productos disponibles</p>
+    <% } %>
+    <!-- Ruta Absoluta al inicio -->
+    <a href="/prueba/Conexion.jsp">Regresar al Inicio</a>
+</body>
 </html>

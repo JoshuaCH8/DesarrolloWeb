@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Logica.ConexionDB;
+import Logica.Producto;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "SvEliminarProducto", urlPatterns = {"/SvEliminarProducto"})
 public class SvEliminarProducto extends HttpServlet {
@@ -21,41 +23,44 @@ public class SvEliminarProducto extends HttpServlet {
 
     }
 
-    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         try {
-            ConexionDB db = new ConexionDB();
-            Connection conexion = db.getConexion();
-
             ProductoDAO dao = new ProductoDAO();
-            ArrayList<String> lista_productos = dao.mostrarProductos(conexion);
-
+            List<Producto> lista_productos = dao.obtenerProductos();
+            
             request.setAttribute("lista_productos", lista_productos);
-
-        } catch (Exception e) {
+        } catch(Exception e) {
             e.printStackTrace();
+            request.setAttribute("mensaje", "Error al cargar productos");
         }
         
         request.getRequestDispatcher("EliminarProducto.jsp").forward(request, response);
     }
-
-    @Override
+    
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int id = Integer.parseInt(request.getParameter("id_producto"));
-        ProductoDAO dao = new ProductoDAO();
-        
-        if(dao.eliminarProducto(id)){
-            request.setAttribute("mensaje", "Producto eliminado correctamente");
-        } 
-        else{
-            request.setAttribute("mensaje", "Error al eliminar el producto");
+        try {
+            int id = Integer.parseInt(request.getParameter("id_producto"));
+            
+            ProductoDAO dao = new ProductoDAO();
+            boolean eliminado = dao.eliminarProducto(id);
+            
+            if(eliminado){
+                request.setAttribute("mensaje", "✅ Producto eliminado correctamente");
+            } else {
+                request.setAttribute("mensaje", "❌ Error al eliminar el producto");
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("mensaje", "❌ Error en los datos");
         }
         
-        // Redirigir de vuelta a inicio
-        request.getRequestDispatcher("Conexion.jsp").forward(request, response);
+        // Recargar la lista
+        doGet(request, response);
     }
 
     @Override

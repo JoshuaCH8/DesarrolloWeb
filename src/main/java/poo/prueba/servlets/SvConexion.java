@@ -23,7 +23,6 @@ public class SvConexion extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
         // Mostrar el formulario vacío cuando se accede por GET
         RequestDispatcher dispatcher = request.getRequestDispatcher("Conexion.jsp");
         dispatcher.forward(request, response);
@@ -33,8 +32,6 @@ public class SvConexion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //String usuario = request.getParameter("nombre");
-        //String password = request.getParameter("password");
         // Objeto que accede a metodo de clase java
         ConexionDB db = new ConexionDB();
         // Acceso a la conexion

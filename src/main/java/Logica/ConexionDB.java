@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ConexionDB {
-    private static final String URL = "jdbc:mysql://localhost:3306/htmlDB";
+    private static final String URL = "jdbc:mysql://localhost:3306/tiendaDB";
     private static final String usuario = "root";
     private static final String password = "Bj8mysql8.";
 
