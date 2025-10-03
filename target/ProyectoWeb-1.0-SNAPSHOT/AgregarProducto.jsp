@@ -14,7 +14,7 @@
         <meta name="description" content="Pagina Web y Sistema de Gestion de Tienda" />
         <meta name="keywords" content="Tienda, sistema, web, desarrollo, venta" />
         <meta name="copyright" content="Joshua Correa Herrera" />
-        <title>Añadir Producto</title>
+        <title>Agregar Producto</title>
         <script>
             function generarCodigoBarras() {
                 fetch('SvAgregarProducto?action=generarCodigo')

@@ -19,7 +19,7 @@
         <meta name="description" content="Pagina Web y Sistema de Gestion de Tienda" />
         <meta name="keywords" content="Tienda, sistema, web, desarrollo, venta" />
         <meta name="copyright" content="Joshua Correa Herrera" />
-        <title>Eliminar Prodcuto</title>
+        <title>Eliminar Producto</title>
     </head>
 <body>
     <h2>Lista de productos</h2>

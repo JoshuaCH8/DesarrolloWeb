@@ -200,7 +200,7 @@ public class ProductoDAO {
         return categorias;
     }
     
-    // MÉTODO COMPATIBILIDAD (para no romper tu código existente)
+    // MÉTODO usado para SvEditar
     public ArrayList<String> mostrarProductos(Connection conexion) {
         ArrayList<String> lista_productos = new ArrayList<>();
         int listado = 1;

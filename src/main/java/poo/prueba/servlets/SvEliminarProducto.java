@@ -49,14 +49,14 @@ public class SvEliminarProducto extends HttpServlet {
             boolean eliminado = dao.eliminarProducto(id);
             
             if(eliminado){
-                request.setAttribute("mensaje", "✅ Producto eliminado correctamente");
+                request.setAttribute("mensaje", "Producto eliminado correctamente");
             } else {
-                request.setAttribute("mensaje", "❌ Error al eliminar el producto");
+                request.setAttribute("mensaje", "Error al eliminar el producto");
             }
             
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("mensaje", "❌ Error en los datos");
+            request.setAttribute("mensaje", "Error en los datos");
         }
         
         // Recargar la lista

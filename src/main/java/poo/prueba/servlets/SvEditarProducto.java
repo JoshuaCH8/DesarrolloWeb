@@ -27,29 +27,17 @@ public class SvEditarProducto extends HttpServlet {
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
 
-    System.out.println("🚀 doGet de SvEditarProducto ejecutándose");
-    
     try{
         ProductoDAO dao = new ProductoDAO();
         List<Producto> lista_productos = dao.obtenerProductos();
         
-        System.out.println("📦 Productos obtenidos: " + (lista_productos != null ? lista_productos.size() : "NULL"));
-        
-        if(lista_productos != null) {
-            for(Producto p : lista_productos) {
-                System.out.println("Producto: " + p.getIdProducto() + " - " + p.getNombreProducto());
-            }
-        }
-        
         request.setAttribute("lista_productos", lista_productos);
     } catch(Exception e){
-        System.out.println("❌ Error en doGet: " + e.getMessage());
         e.printStackTrace();
         request.setAttribute("mensaje", "Error al cargar productos");
     }
     
     request.getRequestDispatcher("EditarProducto.jsp").forward(request, response);
-    System.out.println("✅ Redirigiendo a EditarProducto.jsp");
 }
     
     private void mostrarListaProductos(HttpServletRequest request, HttpServletResponse response) 
@@ -100,29 +88,25 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
     
     try {
-        // 1. Obtener ID (único campo obligatorio)
+        // Obtener ID (único campo obligatorio)
         int id = Integer.parseInt(request.getParameter("id_producto"));
         
         ProductoDAO dao = new ProductoDAO();
         
-        // 2. Obtener producto actual de la base de datos
+        // Obtener producto actual de la base de datos
         Producto productoActual = dao.obtenerProductoPorId(id);
         
         if (productoActual == null) {
-            request.setAttribute("mensaje", "❌ Producto no encontrado con ID: " + id);
+            request.setAttribute("mensaje", "Producto no encontrado con ID: " + id);
             doGet(request, response);
             return;
         }
         
-        System.out.println("📝 Editando producto ID: " + id);
-        System.out.println("Valores actuales: " + productoActual.getNombreProducto() + " - $" + productoActual.getPrecioProducto());
-        
-        // 3. Actualizar SOLO los campos que tienen valor (no vacíos y no cero)
+        // Actualizar SOLO los campos que tienen valor (no vacíos y no cero)
         
         // Nombre
         String nuevoNombre = request.getParameter("nuevo_nombre_producto");
         if (nuevoNombre != null && !nuevoNombre.trim().isEmpty()) {
-            System.out.println("🔄 Cambiando nombre a: " + nuevoNombre);
             productoActual.setNombreProducto(nuevoNombre.trim());
         }
         
@@ -131,7 +115,6 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         if (precioStr != null && !precioStr.trim().isEmpty()) {
             BigDecimal nuevoPrecio = new BigDecimal(precioStr);
             if (nuevoPrecio.compareTo(BigDecimal.ZERO) > 0) {
-                System.out.println("🔄 Cambiando precio a: " + nuevoPrecio);
                 productoActual.setPrecioProducto(nuevoPrecio);
             }
         }
@@ -141,7 +124,6 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         if (cantidadStr != null && !cantidadStr.trim().isEmpty()) {
             int nuevaCantidad = Integer.parseInt(cantidadStr);
             if (nuevaCantidad > 0) {
-                System.out.println("🔄 Cambiando cantidad a: " + nuevaCantidad);
                 productoActual.setCantidadProducto(nuevaCantidad);
             }
         }
@@ -151,7 +133,6 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         if (categoriaStr != null && !categoriaStr.trim().isEmpty()) {
             int nuevaCategoriaId = Integer.parseInt(categoriaStr);
             if (nuevaCategoriaId > 0) {
-                System.out.println("🔄 Cambiando categoría a: " + nuevaCategoriaId);
                 productoActual.setCategoriaId(nuevaCategoriaId);
             }
         }
@@ -159,32 +140,27 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         // Descripción
         String nuevaDescripcion = request.getParameter("nueva_descripcion");
         if (nuevaDescripcion != null && !nuevaDescripcion.trim().isEmpty()) {
-            System.out.println("🔄 Cambiando descripción");
             productoActual.setDescripcion(nuevaDescripcion.trim());
         }
         
-        // 4. Ejecutar actualización
+        // Ejecutar actualización
         boolean actualizado = dao.modificarProducto(productoActual);
         
         if(actualizado){
-            request.setAttribute("mensaje", "✅ Producto modificado correctamente");
-            System.out.println("✅ Producto actualizado en BD");
+            request.setAttribute("mensaje", "Producto modificado correctamente");
         } else {
-            request.setAttribute("mensaje", "❌ Error al modificar el producto");
-            System.out.println("❌ Error al actualizar producto");
+            request.setAttribute("mensaje", "Error al modificar el producto");
         }
         
     } catch (NumberFormatException e) {
         e.printStackTrace();
-        request.setAttribute("mensaje", "❌ Error en el formato de los números");
-        System.out.println("❌ NumberFormatException: " + e.getMessage());
+        request.setAttribute("mensaje", "Error en el formato de los números");
     } catch (Exception e) {
         e.printStackTrace();
-        request.setAttribute("mensaje", "❌ Error interno del servidor");
-        System.out.println("❌ Exception: " + e.getMessage());
+        request.setAttribute("mensaje", "Error interno del servidor");
     }
     
-    // 5. Volver a cargar la lista
+    // Volver a cargar la lista
     doGet(request, response);
 }
 

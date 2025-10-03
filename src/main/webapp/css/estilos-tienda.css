@@ -1,0 +1,279 @@
+/* ===== ESTILOS ELEGANTES - ABARROTES LA HACIENDA ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+
+.mision-vision {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+.texto-cuadro {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    border-left: 4px solid #4a7c59;
+}
+
+.texto-cuadro h3 {
+    color: #2c5530;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.texto-cuadro p {
+    color: #666;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Header elegante */
+.header {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header h1 {
+    color: #2c5530;
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.header h3 {
+    color: #4a7c59;
+    margin: 25px 0 15px 0;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.header p {
+    color: #666;
+    font-size: 1.1em;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* Sistema de grids mejorado */
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.menu-section {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.menu-section h2 {
+    color: #2c5530;
+    margin-bottom: 25px;
+    font-size: 1.6em;
+    font-weight: 600;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e8f5e8;
+}
+
+/* BOTONES EN FILA - AZULADOS Y SUAVES */
+.menu-botones, .menu-botones-2 {
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 15px; /* Separación entre botones */
+    flex-wrap: wrap; /* Permite que se ajusten en pantallas pequeñas */
+}
+
+/* Botones azulados elegantes */
+.btn-boton {
+    display: inline-block;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    text-decoration: none;
+    border-radius: 16px; /* Esquinas muy suavizadas */
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-family: inherit;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.25);
+    min-width: 160px; /* Ancho mínimo para consistencia */
+}
+
+/* Efectos hover mejorados */
+.btn-boton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+    background: linear-gradient(135deg, #5dade2, #3498db);
+}
+
+.btn-boton:active {
+    transform: translateY(-1px);
+}
+
+/* Colores específicos para cada sección */
+.menu-botones .btn-boton {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.25);
+}
+
+.menu-botones .btn-boton:hover {
+    background: linear-gradient(135deg, #5dade2, #3498db);
+}
+
+.menu-botones-2 .btn-boton {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    box-shadow: 0 6px 20px rgba(155, 89, 182, 0.25);
+}
+
+.menu-botones-2 .btn-boton:hover {
+    background: linear-gradient(135deg, #bb8fce, #9b59b6);
+}
+
+/* Mensajes del sistema mejorados */
+.mensaje-sistema {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 25px;
+    border-radius: 16px;
+    margin: 25px 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border-left: 5px solid #3498db;
+    text-align: center;
+}
+
+.mensaje-exito {
+    border-left-color: #27ae60;
+    background: rgba(39, 174, 96, 0.05);
+}
+
+.mensaje-error {
+    border-left-color: #e74c3c;
+    background: rgba(231, 76, 60, 0.05);
+}
+
+/* Responsive Design mejorado */
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .header h1 {
+        font-size: 2.2em;
+    }
+    
+    .header {
+        padding: 30px 20px;
+    }
+    
+    .menu-section {
+        padding: 25px 20px;
+    }
+    
+    .menu-botones, .menu-botones-2 {
+        gap: 12px;
+    }
+    
+    .btn-boton {
+        padding: 12px 20px;
+        font-size: 0.95em;
+        min-width: 140px;
+        border-radius: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .header h1 {
+        font-size: 1.9em;
+    }
+    
+    .btn-boton {
+        padding: 11px 18px;
+        font-size: 0.9em;
+        min-width: 130px;
+        border-radius: 12px;
+    }
+    
+    .menu-botones, .menu-botones-2 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-boton {
+        width: 100%;
+        max-width: 250px;
+    }
+}
+
+/* Animaciones suaves */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-section {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.menu-section:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+/* Efectos de hover para secciones */
+.menu-section:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
