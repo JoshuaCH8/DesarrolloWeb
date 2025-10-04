@@ -1,9 +1,8 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" type="text/css" href="css/estilos.css" />
@@ -12,6 +11,7 @@
         <meta name="keywords" content="Tienda, sistema, web, desarrollo, venta" />
         <meta name="copyright" content="Joshua Correa Herrera" />
         <title>Inicio</title>
+        <link rel="icon" type="image/png" href="img/logo.png" />
     </head>
     <body>
         <div class="container">
@@ -64,5 +64,18 @@
             </div>
             <% }%>
         </div>
+
+        <p>
+            <a href="https://validator.w3.org/check?uri=referer"><img
+                    src="https://www.w3.org/Icons/valid-xhtml11-blue" alt="Valid XHTML 1.1" height="31" width="88" /></a>
+        </p>
+        <p>
+            <a href="https://jigsaw.w3.org/css-validator/check/referer">
+                <img style="border:0;width:88px;height:31px"
+                     src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                     alt="Valid CSS!" />
+            </a>
+        </p>
+
     </body>
 </html>

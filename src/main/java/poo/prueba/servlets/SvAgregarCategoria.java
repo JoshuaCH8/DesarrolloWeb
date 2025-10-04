@@ -51,7 +51,7 @@ public class SvAgregarCategoria extends HttpServlet {
         }
         
         // Redirifir al mismo JSP
-        request.getRequestDispatcher("AgregarCategoria.jsp");
+        request.getRequestDispatcher("AgregarCategoria.jsp").forward(request, response);
     }
 
     @Override

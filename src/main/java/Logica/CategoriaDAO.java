@@ -20,7 +20,6 @@ public class CategoriaDAO {
             
             ps.setString(1, categoria.getNombreCategoria());
             ps.setString(2, categoria.getDescripcion());
-            ps.setInt(3, categoria.getEstado());
             
             int rows = ps.executeUpdate();
             insertado = rows > 0;
@@ -34,7 +33,7 @@ public class CategoriaDAO {
     
     // ELIMINAR categoria
     public boolean eliminarCategoria(int idCategoria) {
-        String sql = "UPDATE categoria SET estado = 0 WHERE id_categoria = ?";
+        String sql = "UPDATE categorias SET estado = 0 WHERE id_categoria = ?";
         
         try (Connection conn = new ConexionDB().getConexion();
                 PreparedStatement ps = conn.prepareStatement(sql)) {

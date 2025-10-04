@@ -48,5 +48,18 @@
                 </div>
             </form>
         </div>
+
+        <p>
+            <a href="https://validator.w3.org/check?uri=referer"><img
+                    src="https://www.w3.org/Icons/valid-xhtml11-blue" alt="Valid XHTML 1.1" height="31" width="88" /></a>
+        </p>
+        <p>
+            <a href="https://jigsaw.w3.org/css-validator/check/referer">
+                <img style="border:0;width:88px;height:31px"
+                     src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                     alt="Valid CSS!" />
+            </a>
+        </p>
+
     </body>
 </html>
