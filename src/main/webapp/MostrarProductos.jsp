@@ -14,6 +14,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="css/estilos.css" />
         <meta name="author" content="Joshua Correa Herrera" />
         <meta name="description" content="Pagina Web y Sistema de Gestion de Tienda" />
         <meta name="keywords" content="Tienda, sistema, web, desarrollo, venta" />
@@ -21,41 +22,90 @@
         <title>Mostrar Productos</title>
     </head>
     <body>
-        <h2>Lista de Productos.</h2>
-        
-        <%
-            List<Producto> lista_productos = (List<Producto>)request.getAttribute("lista_productos");
-            if (lista_productos != null && !lista_productos.isEmpty()) {            
-        %>
-            <table border="1" style="width: 100%;">
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Código Barras</th>
-                    <th>Categoría ID</th>
-                </tr>
-                <%
+        <div class="container">
+            <h2>Inventario de Productos</h2>
+            <p class="subtitle">Catálogo completo de productos disponibles en la tienda</p>
+
+            <%
+                List<Producto> lista_productos = (List<Producto>) request.getAttribute("lista_productos");
+                if (lista_productos != null && !lista_productos.isEmpty()) {
+
+                    // Calcular estadísticas
+                    int totalProductos = lista_productos.size();
+                    int totalStock = 0;
+                    double valorTotal = 0.0;
+
                     for (Producto producto : lista_productos) {
-                %>
+                        totalStock += producto.getCantidadProducto();
+                        valorTotal += producto.getPrecioProducto().doubleValue() * producto.getCantidadProducto();
+                    }
+            %>
+            
+            <!-- Estadísticas simplificadas -->
+            <div class="mensaje" style="text-align: center; margin-bottom: 20px;">
+                <p>
+                    <strong>Total Productos: <%= totalProductos%> | 
+                    En Stock: <%= totalStock%></strong>
+                </p>
+            </div>
+
+            <!-- Tabla de productos -->
+            <table class="table">
+                <thead>
                     <tr>
-                        <td><%= producto.getIdProducto() %></td>
-                        <td><%= producto.getNombreProducto() %></td>
-                        <td>$<%= producto.getPrecioProducto() %></td>
-                        <td><%= producto.getCantidadProducto() %></td>
-                        <td><%= producto.getCodigoBarras() %></td>
-                        <td><%= producto.getCategoriaId() %></td>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Código Barras</th>
+                        <th>Categoría</th>
                     </tr>
-                <% } %>
+                </thead>
+                <tbody>
+                    <%
+                        for (Producto producto : lista_productos) {
+                    %>
+                    <tr>
+                        <td><%= producto.getIdProducto()%></td>
+                        <td><strong><%= producto.getNombreProducto()%></strong></td>
+                        <td>$<%= producto.getPrecioProducto()%></td>
+                        <td>
+                            <%
+                                int stock = producto.getCantidadProducto();
+                                String estiloStock = "";
+                                if (stock > 10) {
+                                    estiloStock = "color: green;";
+                                } else if (stock > 0) {
+                                    estiloStock = "color: orange;";
+                                } else {
+                                    estiloStock = "color: red;";
+                                }
+                            %>
+                            <span style="<%= estiloStock %> font-weight: bold;">
+                                <%= stock %>
+                            </span>
+                        </td>
+                        <td><%= producto.getCodigoBarras()%></td>
+                        <td>#<%= producto.getCategoriaId()%></td>
+                    </tr>
+                    <% } %>
+                </tbody>
             </table>
-        <%
+            <%
             } else {
-        %>
-            <p>No hay productos disponibles</p>
-        <% } %>
-        
-    <!-- Ruta Absoluta al inicio -->
-    <a href="/prueba/Conexion.jsp">Regresar al Inicio</a>        
+            %>
+            <!-- Estado sin datos -->
+            <div class="mensaje" style="text-align: center;">
+                <p><strong>No hay productos disponibles</strong></p>
+                <p>El inventario de productos está vacío.</p>
+                <a href="AgregarProducto.jsp" class="btn btn-success">Agregar Primer Producto</a>
+            </div>
+            <% }%>
+
+            <!-- Botón de regreso -->
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="Conexion.jsp" class="btn">Volver al Inicio</a>
+            </div>
+        </div>
     </body>
 </html>

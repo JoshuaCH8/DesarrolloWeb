@@ -14,8 +14,6 @@ body {
     line-height: 1.6;
 }
 
-
-
 .mision-vision {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -276,4 +274,776 @@ body {
     transform: translateY(-5px);
     transition: transform 0.3s ease;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== ESTILOS PARA FORMULARIOS ===== */
+
+.container-formulario {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-header h2 {
+    color: #2c5530;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.form-header p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.form-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e8f5e8;
+}
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2c5530;
+    margin-bottom: 8px;
+    font-size: 1em;
+}
+
+.form-input, .form-textarea {
+    padding: 14px 16px;
+    border: 2px solid #e8f5e8;
+    border-radius: 12px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: #4a7c59;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.1);
+}
+
+.form-input[readonly] {
+    background: #f8f9fa;
+    color: #666;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+/* Grupo de input con botón */
+.input-group {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.input-group .form-input {
+    flex: 1;
+}
+
+.btn-generar {
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.btn-generar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+    background: linear-gradient(135deg, #5dade2, #3498db);
+}
+
+/* Botones de acción */
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    padding: 16px 35px;
+    background: linear-gradient(135deg, #27ae60, #219653);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.25);
+}
+
+.btn-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(39, 174, 96, 0.4);
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.btn-cancelar {
+    padding: 16px 35px;
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(149, 165, 166, 0.25);
+}
+
+.btn-cancelar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(149, 165, 166, 0.4);
+    background: linear-gradient(135deg, #bdc3c7, #95a5a6);
+}
+
+/* Responsive para formularios */
+@media (max-width: 768px) {
+    .container-formulario {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+    
+    .form-container {
+        padding: 30px 25px;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .btn-submit, .btn-cancelar {
+        width: 100%;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+}
+
+/* ===== ESTILOS PARA TABLAS ===== */
+
+.container-tabla {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.tabla-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.tabla-header h2 {
+    color: #2c5530;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.tabla-header p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.tabla-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.tabla-datos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+}
+
+.tabla-datos thead {
+    background: linear-gradient(135deg, #2c5530, #4a7c59);
+}
+
+.tabla-datos th {
+    color: white;
+    padding: 18px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.tabla-datos td {
+    padding: 16px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #555;
+}
+
+.tabla-datos tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.tabla-datos tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Columna de acciones */
+.acciones {
+    text-align: center;
+    width: 120px;
+}
+
+.form-eliminar {
+    margin: 0;
+    padding: 0;
+}
+
+.btn-eliminar {
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.btn-eliminar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+    background: linear-gradient(135deg, #ec7063, #e74c3c);
+}
+
+/* Estado sin datos */
+.sin-datos {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.sin-datos p {
+    color: #999;
+    font-size: 1.2em;
+}
+
+/* Footer de acciones */
+.acciones-footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-regresar {
+    display: inline-block;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-regresar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(149, 165, 166, 0.3);
+    background: linear-gradient(135deg, #bdc3c7, #95a5a6);
+}
+
+/* Responsive para tablas */
+@media (max-width: 768px) {
+    .container-tabla {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+    
+    .tabla-datos {
+        font-size: 0.9em;
+    }
+    
+    .tabla-datos th,
+    .tabla-datos td {
+        padding: 12px 10px;
+    }
+    
+    .btn-eliminar {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+}
+
+/* ===== ESTILOS PARA VISTAS DE EDICIÓN ===== */
+
+.container-edicion {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.edicion-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.edicion-header h2 {
+    color: #2c5530;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.edicion-header p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+/* Secciones divididas */
+.seccion-lista {
+    margin-bottom: 40px;
+}
+
+.seccion-lista h3 {
+    color: #2c5530;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    font-weight: 600;
+    border-bottom: 2px solid #e8f5e8;
+    padding-bottom: 10px;
+}
+
+.seccion-formulario {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+/* Ajustes específicos para formularios de edición */
+.seccion-formulario .form-container {
+    padding: 30px;
+}
+
+.seccion-formulario .form-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.seccion-formulario .form-header h3 {
+    color: #2c5530;
+    font-size: 1.5em;
+    margin-bottom: 8px;
+}
+
+.seccion-formulario .form-header p {
+    color: #666;
+    font-size: 1em;
+}
+
+/* Responsive para vista de edición */
+@media (max-width: 768px) {
+    .container-edicion {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+    
+    .seccion-formulario .form-container {
+        padding: 25px 20px;
+    }
+    
+    .edicion-header h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-edicion {
+        margin: 10px auto;
+        padding: 0 10px;
+    }
+    
+    .seccion-formulario .form-container {
+        padding: 20px 15px;
+    }
+}
+
+/* ===== AJUSTES ESPECÍFICOS PARA FORMULARIO DE PRODUCTOS ===== */
+
+/* Campos numéricos específicos */
+.form-input[type="number"] {
+    text-align: right;
+}
+
+/* Placeholders más claros */
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Grupos de formulario con mejor espaciado */
+.product-form .form-group {
+    margin-bottom: 20px;
+}
+
+/* Ajustes responsive para formulario de productos */
+@media (max-width: 768px) {
+    .seccion-formulario .product-form .form-group {
+        margin-bottom: 15px;
+    }
+}
+
+/* ===== ESTILOS ESPECÍFICOS PARA MOSTRAR CATEGORÍAS ===== */
+
+/* Información de cantidad */
+.info-cantidad {
+    background: linear-gradient(135deg, #e8f5e8, #f0f7f0);
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-left: 4px solid #4a7c59;
+}
+
+.info-cantidad p {
+    margin: 0;
+    color: #2c5530;
+    font-size: 1.1em;
+}
+
+.info-cantidad strong {
+    color: #27ae60;
+    font-size: 1.2em;
+}
+
+/* Estilos específicos para columnas de categorías */
+.id-categoria {
+    font-weight: 600;
+    color: #2c5530;
+    text-align: center;
+    width: 80px;
+}
+
+.nombre-categoria {
+    font-weight: 600;
+    color: #2c5530;
+}
+
+.descripcion-categoria {
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Mejora para estado sin datos */
+.icono-sin-datos {
+    font-size: 4em;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.sin-datos h3 {
+    color: #7f8c8d;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+
+.sin-datos p {
+    color: #95a5a6;
+    margin-bottom: 25px;
+    font-size: 1.1em;
+}
+
+/* Efectos hover específicos para tabla de categorías */
+.tabla-datos tbody tr:hover .nombre-categoria {
+    color: #4a7c59;
+}
+
+.tabla-datos tbody tr:hover .descripcion-categoria {
+    color: #555;
+}
+
+/* Responsive específico para categorías */
+@media (max-width: 768px) {
+    .info-cantidad {
+        padding: 12px 15px;
+        font-size: 0.95em;
+    }
+    
+    .id-categoria {
+        width: 60px;
+        font-size: 0.9em;
+    }
+    
+    .nombre-categoria {
+        font-size: 0.95em;
+    }
+    
+    .descripcion-categoria {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .tabla-datos th:nth-child(1),
+    .tabla-datos td:nth-child(1) {
+        display: none; /* Oculta ID en móviles pequeños */
+    }
+    
+    .info-cantidad {
+        padding: 10px 12px;
+        font-size: 0.9em;
+    }
+    
+    .sin-datos {
+        padding: 40px 20px;
+    }
+    
+    .icono-sin-datos {
+        font-size: 3em;
+    }
+}
+
+/* ===== ESTILOS ESPECTACULARES PARA MOSTRAR PRODUCTOS ===== */
+
+/* Estadísticas del inventario */
+.estadisticas-inventario {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.estadistica-item {
+    background: white;
+    padding: 25px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    border-top: 4px solid #3498db;
+    transition: transform 0.3s ease;
+}
+
+.estadistica-item:hover {
+    transform: translateY(-5px);
+}
+
+.estadistica-item:nth-child(2) {
+    border-top-color: #27ae60;
+}
+
+.estadistica-item:nth-child(3) {
+    border-top-color: #e74c3c;
+}
+
+.estadistica-icono {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.estadistica-valor {
+    display: block;
+    font-size: 2em;
+    font-weight: 700;
+    color: #2c5530;
+    line-height: 1;
+}
+
+.estadistica-label {
+    color: #666;
+    font-size: 0.9em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Badges para stock */
+.badge-stock {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85em;
+    color: white;
+}
+
+.stock-alto {
+    background: linear-gradient(135deg, #27ae60, #219653);
+}
+
+.stock-medio {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.stock-bajo {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+/* Badges para categorías */
+.badge-categoria {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    color: #495057;
+    font-weight: 600;
+    font-size: 0.85em;
+    border: 1px solid #e9ecef;
+}
+
+/* Estilos específicos para columnas de productos */
+.id-producto {
+    font-weight: 600;
+    color: #2c5530;
+    text-align: center;
+    width: 70px;
+}
+
+.nombre-producto {
+    font-weight: 600;
+    color: #2c5530;
+    min-width: 200px;
+}
+
+.precio-producto {
+    font-weight: 700;
+    color: #27ae60;
+    text-align: right;
+    width: 100px;
+}
+
+.stock-producto {
+    text-align: center;
+    width: 100px;
+}
+
+.codigo-barras {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85em;
+    color: #6c757d;
+    width: 140px;
+}
+
+.categoria-producto {
+    text-align: center;
+    width: 100px;
+}
+
+/* Efectos hover para productos */
+.tabla-datos tbody tr:hover .nombre-producto {
+    color: #4a7c59;
+}
+
+.tabla-datos tbody tr:hover .precio-producto {
+    color: #219653;
+}
+
+/* Responsive para inventario */
+@media (max-width: 1024px) {
+    .estadisticas-inventario {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .tabla-datos th:nth-child(5),
+    .tabla-datos td:nth-child(5) {
+        display: none; /* Oculta código de barras en tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .estadisticas-inventario {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .estadistica-item {
+        padding: 20px 15px;
+    }
+    
+    .tabla-datos th:nth-child(6),
+    .tabla-datos td:nth-child(6) {
+        display: none; /* Oculta categoría en móviles */
+    }
+    
+    .nombre-producto {
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tabla-datos th:nth-child(1),
+    .tabla-datos td:nth-child(1) {
+        display: none; /* Oculta ID en móviles pequeños */
+    }
+    
+    .estadistica-valor {
+        font-size: 1.7em;
+    }
+    
+    .estadistica-icono {
+        font-size: 2em;
+    }
+}
+
+/* Agregar al archivo estilos.css */
+
+.no-data {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+    font-style: italic;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+/* Mejoras para tablas con acciones */
+.table td:last-child {
+    text-align: center;
+}
+
+/* Estilos para botones pequeños en tablas */
+.btn-small {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+/* Asegurar que los formularios en tablas se vean bien */
+.table form {
+    margin: 0;
+    padding: 0;
 }

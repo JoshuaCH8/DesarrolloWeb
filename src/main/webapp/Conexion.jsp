@@ -6,70 +6,63 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" href="css/estilos-tienda.css" />
+        <link rel="stylesheet" type="text/css" href="css/estilos.css" />
         <meta name="author" content="Joshua Correa Herrera" />
         <meta name="description" content="Pagina Web y Sistema de Gestion de Tienda" />
         <meta name="keywords" content="Tienda, sistema, web, desarrollo, venta" />
         <meta name="copyright" content="Joshua Correa Herrera" />
         <title>Inicio</title>
     </head>
-<body>
-    
-        <!-- Contenedor de menu PRODUCTOS-->
-    <nav class="menu-botones">
-        <!-- Botón con formulario (POST) -->
-        
-        <!-- Mostrar Productos -->
-        <a href="SvMostrarProductos" class="btn-boton">Mostrar Productos</a>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>ABARROTES LA HACIENDA</h1>
+            </div>
 
-        <!-- Enlace (GET) -->
-        <a href="AgregarProducto.jsp" class="btn-boton">Agregar Producto</a>
+            <!-- Menú de Productos -->
+            <div class="menu-section">
+                <h2>Gestión de Productos</h2>
+                <div class="menu-buttons">
+                    <a href="SvMostrarProductos" class="btn">Mostrar Productos</a>
+                    <a href="AgregarProducto.jsp" class="btn">Agregar Producto</a>
+                    <a href="SvEditarProducto" class="btn">Editar Producto</a>
+                    <a href="SvEliminarProducto" class="btn btn-danger">Eliminar Producto</a>
+                </div>
+            </div>
 
-        <!-- Otro enlace (GET) -->
-        <a href="SvEditarProducto" class="btn-boton">Editar Producto</a>
+            <!-- Menú de Categorías -->
+            <div class="menu-section">
+                <h2>Gestión de Categorías</h2>
+                <div class="menu-buttons">
+                    <a href="SvMostrarCategorias" class="btn">Mostrar Categorías</a>
+                    <a href="AgregarCategoria.jsp" class="btn">Agregar Categoría</a>
+                    <a href="SvEditarCategoria" class="btn">Editar Categoría</a>
+                    <a href="SvEliminarCategoria" class="btn btn-danger">Eliminar Categoría</a>
+                </div>
+            </div>
 
-        <!-- Otro botón con POST ES UN HREF-->
-        <a href="SvEliminarProducto" class="btn-boton">Elminar Producto</a>
-    </nav>
-        <!<!-- Contenedor de menu CATEGORIAS -->
-    <nav class="menu-botones-2">
-        <!-- Botón con formulario (POST) -->
-        
-        <!-- Mostrar Productos -->
-        <a href="SvMostrarCategorias" class="btn-boton">Mostrar Categorias</a>
+            <!-- Misión y Visión -->
+            <div class="mision-vision">
+                <div class="text-box">
+                    <h3>Misión</h3>
+                    <p>Proveer a nuestras familias y comunidad productos de primera necesidad con calidad, frescura y variedad, ofreciendo un servicio cercano, honesto y accesible. Nos comprometemos a ser un negocio de confianza que contribuye al bienestar de nuestros clientes y al desarrollo de la localidad.</p>
+                </div>
 
-        <!-- Enlace (GET) -->
-        <a href="AgregarCategoria.jsp" class="btn-boton">Agregar Categoria</a>
+                <div class="text-box">
+                    <h3>Visión</h3>
+                    <p>Ser la tienda de abarrotes preferida en la comunidad, reconocida por nuestra atención personalizada, surtido completo y precios justos. Buscamos innovar en servicios y mantenernos como un espacio cercano donde cada cliente se sienta como en casa.</p>
+                </div>
+            </div>
 
-        <!-- Otro enlace (GET) -->
-        <a href="SvEditarCategoria" class="btn-boton">Editar Categoria</a>
-
-        <!-- Otro botón con POST ES UN HREF-->
-        <a href="SvEliminarCategoria" class="btn-boton">Elminar Categoria</a>
-    </nav>
-        
-    <br/>
-    <br/>
-    
-    <div class="mision-vision">
-        <div class="texto-cuadro">
-            <h3>Misión</h3>
-            <p>Proveer a nuestras familias y comunidad productos de primera necesidad con calidad, frescura y variedad, ofreciendo un servicio cercano, honesto y accesible. Nos comprometemos a ser un negocio de confianza que contribuye al bienestar de nuestros clientes y al desarrollo de la localidad.</p>
+            <!-- Mensajes del sistema -->
+            <%
+                String mensaje = (String) request.getAttribute("mensaje");
+                if (mensaje != null) {
+            %>
+            <div class="mensaje">
+                <%= mensaje%>
+            </div>
+            <% }%>
         </div>
-    
-        <div class="texto-cuadro">
-            <h3>Visión</h3>
-            <p>Ser la tienda de abarrotes preferida en la comunidad, reconocida por nuestra atención personalizada, surtido completo y precios justos. Buscamos innovar en servicios y mantenernos como un espacio cercano donde cada cliente se sienta como en casa.</p>
-        </div>
-    </div>
-
-    
-    <% 
-    // Mostrar mensaje del resultado
-    String mensaje = (String) request.getAttribute("mensaje"); %>
-    <% if (mensaje != null) { %>
-    <p style="color:blue;"><%= mensaje %></p>
-    <% } %>
-   
-</body>
+    </body>
 </html>

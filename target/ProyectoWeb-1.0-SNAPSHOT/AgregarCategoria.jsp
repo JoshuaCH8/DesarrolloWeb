@@ -9,7 +9,8 @@
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="css/estilos.css" />
         <meta name="author" content="Joshua Correa Herrera" />
         <meta name="description" content="Pagina Web y Sistema de Gestion de Tienda" />
         <meta name="keywords" content="Tienda, sistema, web, desarrollo, venta" />
@@ -17,30 +18,35 @@
         <title>Agregar Categoria</title>
     </head>
     <body>
-        <h2>Agregar Nueva Categoria</h2>
-        
-        <%
-            String mensaje = (String) request.getAttribute("mensaje");
-            if (mensaje != null) {
-        %>
-            <div style="color: <%= mensaje.contains("✅") ? "green" : "red" %>; margin: 10px 0;">
-                <%= mensaje %>
-            </div>
-        <% } %>
+        <div class="container">
+            <h2>Agregar Nueva Categoría</h2>
+            <p class="subtitle">Registre una nueva categoría para organizar los productos</p>
 
-        <form action="SvAgregarCategoria" method="POST">
-            <label for="nombre_categoria">Nombre de la Categoria:</label>
-            <input type="text" name="nombre_categoria" id="nombre_categoria" required/>
-            <br />  
-            
-            <label for="descripcion">Descripcion:</label>
-            <input type="text" name="descripcion" id="descripcion" required/>
-            <br />            
-            
-            <button type="submit">Agregar Categoria</button>
-        </form>
-        
-        <br />
-        
+            <%
+                String mensaje = (String) request.getAttribute("mensaje");
+                if (mensaje != null) {
+            %>
+            <div class="mensaje">
+                <%= mensaje%>
+            </div>
+            <% }%>
+
+            <form action="SvAgregarCategoria" method="POST" class="form-simple">
+                <div class="form-group">
+                    <label for="nombre_categoria" class="form-label">Nombre de la Categoría:</label>
+                    <input type="text" name="nombre_categoria" id="nombre_categoria" class="form-input" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion" class="form-label">Descripción:</label>
+                    <textarea name="descripcion" id="descripcion" class="form-textarea"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">Agregar Categoría</button>
+                    <a href="Conexion.jsp" class="btn">Cancelar</a>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

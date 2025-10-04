@@ -15,6 +15,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="css/estilos.css" />
         <meta name="author" content="Joshua Correa Herrera" />
         <meta name="description" content="Pagina Web y Sistema de Gestion de Tienda" />
         <meta name="keywords" content="Tienda, sistema, web, desarrollo, venta" />
@@ -22,65 +23,79 @@
         <title>Modificar Categoria</title>
     </head>
     <body>
-        <h2>Lista de categorias</h2>
+        <div class="container">
+            <h2>Modificar Categorías</h2>
+            <p class="subtitle">Actualice la información de las categorías existentes</p>
 
-        <!-- Mostrar mensajes -->
-        <%
-            String mensaje = (String) request.getAttribute("mensaje");
-            if (mensaje != null) {
-        %>
-            <div style="color: blue; margin: 10px 0;">
-                <%= mensaje %>
+            <%
+                String mensaje = (String) request.getAttribute("mensaje");
+                if (mensaje != null) {
+            %>
+            <div class="mensaje">
+                <%= mensaje%>
             </div>
-        <% } %>     
-        
-        <%
-            List<Categoria> lista_categorias = (List<Categoria>) request.getAttribute("lista_categorias");
-            if (lista_categorias != null && !lista_categorias.isEmpty()) {
-            
-        %> 
-            <table border="1" style="width: 100%;">
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Descripcion</th>
-                </tr>
+            <% } %>     
+
+            <!-- Lista de categorías para referencia -->
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #2c5530; margin-bottom: 15px;">Categorías Disponibles (Referencia)</h3>
                 <%
-                    for (Categoria categoria : lista_categorias) {
+                    List<Categoria> lista_categorias = (List<Categoria>) request.getAttribute("lista_categorias");
+                    if (lista_categorias != null && !lista_categorias.isEmpty()) {
+                %> 
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            for (Categoria categoria : lista_categorias) {
+                        %>
+                        <tr>
+                            <td><%= categoria.getIdCategoria()%></td>
+                            <td><strong><%= categoria.getNombreCategoria()%></strong></td>
+                            <td><%= categoria.getDescripcion()%></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <%
+                } else {
                 %>
-                    <tr>
-                        <td><%= categoria.getIdCategoria() %></td>
-                        <td><%= categoria.getNombreCategoria() %></td>
-                        <td>$<%= categoria.getDescripcion()%></td>
-                    </tr>
-                <% } %>
-            </table>
-        <%
-            } else {
-        %>
-            <p>No hay categorias disponibles</p>
-        <% } %>  
-        
-        <h3>Modificar Categoria</h3>
-        <form action="SvEditarCategoria" method="POST">
-            <!-- Campo ID (OBLIGATORIO) -->
-            <label for="id_categoria">ID de la Categoria a modificar:</label>
-            <input type="number" name="id_categoria" id="id_categoria" required/>
-            <br /><br />
-        
-            <!-- Campos OPCIONALES -->
-            <label for="nuevo_nombre_categoria">Nuevo nombre (dejar vacío para no cambiar):</label>
-            <input type="text" name="nuevo_nombre_categoria" id="nuevo_nombre_categoria" placeholder="Ej: Bebidas Azucaradas"/>
-            <br />
-        
-            <label for="nueva_descripcion">Nueva descripción (dejar vacío para no cambiar):</label>
-            <textarea name="nueva_descripcion" id="nueva_descripcion" placeholder="Ej: Bebidas altas en azucares"></textarea>
-            <br />
-        
-            <button type="submit">Modificar Categoria</button>
-        </form>
-        
-    <!-- Ruta Absoluta al inicio -->
-    <a href="/prueba/Conexion.jsp">Regresar al Inicio</a>        
+                <p class="no-data">No hay categorías disponibles</p>
+                <% }%>  
+            </div>
+
+            <!-- Formulario de edición -->
+            <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; border: 1px solid #dee2e6;">
+                <h3 style="color: #2c5530; margin-bottom: 20px; text-align: center;">Formulario de Modificación</h3>
+
+                <form action="SvEditarCategoria" method="POST" class="form-simple">
+                    <div class="form-group">
+                        <label for="id_categoria" class="form-label">ID de la Categoría a modificar:</label>
+                        <input type="number" name="id_categoria" id="id_categoria" class="form-input" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nuevo_nombre_categoria" class="form-label">Nuevo nombre (dejar vacío para no cambiar):</label>
+                        <input type="text" name="nuevo_nombre_categoria" id="nuevo_nombre_categoria" class="form-input" placeholder="Ej: Bebidas Azucaradas"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nueva_descripcion" class="form-label">Nueva descripción (dejar vacío para no cambiar):</label>
+                        <textarea name="nueva_descripcion" id="nueva_descripcion" class="form-textarea" placeholder="Ej: Bebidas altas en azúcares"></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success">Modificar Categoría</button>
+                        <a href="Conexion.jsp" class="btn">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

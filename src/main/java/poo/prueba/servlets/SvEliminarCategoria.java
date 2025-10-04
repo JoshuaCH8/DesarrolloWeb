@@ -31,10 +31,10 @@ public class SvEliminarCategoria extends HttpServlet {
             request.setAttribute("lista_categorias", lista_categorias);
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("mensaje", "Erro al cargar categorias");
+            request.setAttribute("mensaje", "Error al cargar categorias");
         }
         
-        request.getRequestDispatcher("EliminarCategoria").forward(request, response);
+        request.getRequestDispatcher("EliminarCategoria.jsp").forward(request, response);
     }
 
     @Override
@@ -44,8 +44,8 @@ public class SvEliminarCategoria extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id_categoria"));
             
-            ProductoDAO cDao = new ProductoDAO();
-            boolean eliminado = cDao.eliminarProducto(id);
+            CategoriaDAO cDao = new CategoriaDAO();
+            boolean eliminado = cDao.eliminarCategoria(id);
             
             if(eliminado){
                 request.setAttribute("mensaje", "Categoria eliminada correctamente");

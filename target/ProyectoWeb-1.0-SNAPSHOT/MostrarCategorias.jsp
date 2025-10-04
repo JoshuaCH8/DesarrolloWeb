@@ -14,6 +14,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="css/estilos.css" />
         <meta name="author" content="Joshua Correa Herrera" />
         <meta name="description" content="Pagina Web y Sistema de Gestion de Tienda" />
         <meta name="keywords" content="Tienda, sistema, web, desarrollo, venta" />
@@ -21,35 +22,60 @@
         <title>Mostrar Categorias</title>
     </head>
     <body>
-        <h2>Lista de Categorias</h2>
-        
-        <%
-            List<Categoria> lista_categorias = (List<Categoria>)request.getAttribute("lista_categorias");
-            if (lista_categorias != null && !lista_categorias.isEmpty()) {            
-        %>
-            <table border="1" style="width: 100%;">
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Descripcion</th>
-                </tr>
-                <%
-                    for (Categoria categoria : lista_categorias) {
-                %>
-                    <tr>
-                        <td><%= categoria.getIdCategoria()%></td>
-                        <td><%= categoria.getNombreCategoria()%></td>
-                        <td>$<%= categoria.getDescripcion()%></td>
-                    </tr>
-                <% } %>
-            </table>
-        <%
+        <div class="container">
+            <h2>Catálogo de Categorías</h2>
+            <p class="subtitle">Lista completa de categorías disponibles en el sistema</p>
+
+            <%
+                List<Categoria> lista_categorias = (List<Categoria>) request.getAttribute("lista_categorias");
+                if (lista_categorias != null && !lista_categorias.isEmpty()) {
+            %>
+                <!-- Contador simple -->
+                <div style="background: #e7f3ff; padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+                    <p style="margin: 0; color: #004085;">
+                        <strong>Total de categorías: <%= lista_categorias.size() %></strong>
+                    </p>
+                </div>
+
+                <!-- Tabla de categorías -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            for (Categoria categoria : lista_categorias) {
+                        %>
+                        <tr>
+                            <td><%= categoria.getIdCategoria() %></td>
+                            <td><strong><%= categoria.getNombreCategoria() %></strong></td>
+                            <td><%= categoria.getDescripcion() %></td>
+                        </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            <%
             } else {
-        %>
-            <p>No hay categorias disponibles</p>
-        <% } %>
-        
-    <!-- Ruta Absoluta al inicio -->
-    <a href="/prueba/Conexion.jsp">Regresar al Inicio</a>             
+            %>
+                <!-- Estado sin datos -->
+                <div style="text-align: center; padding: 40px; background: #f8f9fa; border-radius: 8px;">
+                    <p style="color: #6c757d; font-size: 1.2em; margin-bottom: 20px;">
+                        No hay categorías disponibles
+                    </p>
+                    <p style="color: #6c757d; margin-bottom: 25px;">
+                        No se han registrado categorías en el sistema.
+                    </p>
+                    <a href="AgregarCategoria.jsp" class="btn btn-success">Agregar Primera Categoría</a>
+                </div>
+            <% } %>
+
+            <div style="text-align: center; margin-top: 25px;">
+                <a href="Conexion.jsp" class="btn">Volver al Inicio</a>
+            </div>
+        </div>
     </body>
 </html>
