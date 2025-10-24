@@ -60,7 +60,6 @@
                             <form action="SvEliminarCategoria" method="POST" style="display: inline;">
                                 <input type="hidden" name="id_categoria" value="<%= categoria.getIdCategoria()%>">
                                     <button type="submit" 
-                                            onclick="return confirm('¿Está seguro de eliminar la categoría: <%= categoria.getNombreCategoria()%>?')"
                                             class="btn btn-danger btn-small">
                                         Eliminar
                                     </button>

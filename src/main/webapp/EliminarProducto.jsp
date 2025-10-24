@@ -65,7 +65,6 @@
                             <form action="SvEliminarProducto" method="POST" style="display: inline;">
                                 <input type="hidden" name="id_producto" value="<%= producto.getIdProducto()%>">
                                     <button type="submit" 
-                                            onclick="return confirm('¿Está seguro de eliminar el producto: <%= producto.getNombreProducto()%>?')"
                                             class="btn btn-danger btn-small">
                                         Eliminar
                                     </button>
