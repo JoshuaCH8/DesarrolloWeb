@@ -43,16 +43,15 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
     private void mostrarListaProductos(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
         try {
-            ConexionDB db = new ConexionDB();
-            Connection conn = db.getConexion();
+            Connection conexion = ConexionDB.getConnection();
         
             ProductoDAO dao = new ProductoDAO();
-            ArrayList<String> lista_productos = dao.mostrarProductos(conn);
+            ArrayList<String> lista_productos = dao.mostrarProductos(conexion);
         
             request.setAttribute("lista_productos", lista_productos);
         
             // Cerrar conexión
-            conn.close();
+            conexion.close();
         } catch(Exception e) {
             e.printStackTrace();
         }

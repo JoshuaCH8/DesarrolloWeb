@@ -44,15 +44,15 @@ public class SvEditarCategoria extends HttpServlet {
         throws ServletException, IOException {
         try {
             ConexionDB db = new ConexionDB();
-            Connection conn = db.getConexion();
+            Connection conexion = ConexionDB.getConnection();
         
             CategoriaDAO dao = new CategoriaDAO();
-            ArrayList<String> lista_categorias = dao.mostrarCategorias(conn);
+            ArrayList<String> lista_categorias = dao.mostrarCategorias();
         
             request.setAttribute("lista_categorias", lista_categorias);
         
             // Cerrar conexión
-            conn.close();
+            conexion.close();
         } catch(Exception e) {
             e.printStackTrace();
         }
