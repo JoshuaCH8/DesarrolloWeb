@@ -22,13 +22,20 @@ public class SvLogin extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         
+        System.out.println("=== INTENTO DE LOGIN ===");
+        System.out.println("Usuario: " + username);
+        System.out.println("Password: " + password);
+        
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         
         try {
             Usuario usuario = usuarioDAO.obtenerPorUsername(username);
+            System.out.println("Usuario encontrado en BD: " + (usuario != null));
             
             if (usuario != null && PasswordUtil.verifyPassword(username, password)) {
                 // Login exitoso
+                System.out.println("✅ LOGIN EXITOSO para: " + username);
+                
                 HttpSession session = request.getSession();
                 session.setAttribute("usuario", usuario);
                 session.setMaxInactiveInterval(30 * 60); // 30 minutos
@@ -47,11 +54,14 @@ public class SvLogin extends HttpServlet {
                 
             } else {
                 // Credenciales incorrectas
+                System.out.println("❌ LOGIN FALLIDO para: " + username);
+                
                 request.setAttribute("error", "Usuario o contraseña incorrectos");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
             }
             
         } catch (SQLException e) {
+            System.err.println("❌ ERROR SQL en login: " + e.getMessage());
             e.printStackTrace();
             request.setAttribute("error", "Error del sistema: " + e.getMessage());
             request.getRequestDispatcher("Login.jsp").forward(request, response);

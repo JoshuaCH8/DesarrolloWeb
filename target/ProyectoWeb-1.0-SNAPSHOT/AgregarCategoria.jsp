@@ -47,6 +47,8 @@
     </head>
     <body>
         <div class="container">
+            <!-- INCLUIR NAVBAR -->
+            <%@include file="navbar.jsp" %>
             <h2>Agregar Nueva Categoría</h2>
             <p class="subtitle">Registre una nueva categoría para organizar los productos</p>
 

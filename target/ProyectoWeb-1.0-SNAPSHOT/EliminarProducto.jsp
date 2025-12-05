@@ -24,6 +24,8 @@
     </head>
     <body>
         <div class="container">
+            <!-- INCLUIR NAVBAR -->
+            <%@include file="navbar.jsp" %>
             <h2>Eliminar Productos</h2>
             <p class="subtitle">Seleccione el producto que desea eliminar del sistema</p>
 

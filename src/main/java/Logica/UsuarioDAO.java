@@ -5,70 +5,105 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDAO {
-    
+
     public boolean crearUsuario(Usuario usuario) throws SQLException {
         String sql = "INSERT INTO usuarios (username, password_hash, email, nombre_completo, rol) VALUES (?, ?, ?, ?, ?)";
-        
-        try (Connection conn = ConexionDB.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
+
+        try ( Connection conn = ConexionDB.getConnection();  PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setString(1, usuario.getUsername());
-            pstmt.setString(2, usuario.getPasswordHash());
+            pstmt.setString(2, usuario.getPasswordHash()); // ✅ Esto ya es el HASH
             pstmt.setString(3, usuario.getEmail());
             pstmt.setString(4, usuario.getNombreCompleto());
             pstmt.setString(5, usuario.getRol());
-            
+
             return pstmt.executeUpdate() > 0;
         }
     }
-    
+
+    public boolean actualizarUsuario(Usuario usuario) throws SQLException {
+        String sql = "UPDATE usuarios SET username=?, email=?, nombre_completo=?, rol=? WHERE id_usuario=?";
+
+        try ( Connection conn = ConexionDB.getConnection();  PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, usuario.getUsername());
+            pstmt.setString(2, usuario.getEmail());
+            pstmt.setString(3, usuario.getNombreCompleto());
+            pstmt.setString(4, usuario.getRol());
+            pstmt.setInt(5, usuario.getIdUsuario());
+
+            return pstmt.executeUpdate() > 0;
+        }
+    }
+
+    public boolean eliminarUsuario(int idUsuario) throws SQLException {
+        String sql = "UPDATE usuarios SET activo = 0 WHERE id_usuario = ?";
+
+        try ( Connection conn = ConexionDB.getConnection();  PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, idUsuario);
+            return pstmt.executeUpdate() > 0;
+        }
+    }
+
     public Usuario obtenerPorUsername(String username) throws SQLException {
-        String sql = "SELECT * FROM usuarios WHERE username = ? AND activo = TRUE";
-        
-        try (Connection conn = ConexionDB.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
+        String sql = "SELECT * FROM usuarios WHERE username = ? AND activo = 1";
+
+        try ( Connection conn = ConexionDB.getConnection();  PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
-            
+
             if (rs.next()) {
                 return mapearUsuario(rs);
             }
             return null;
         }
     }
-    
+
+    public Usuario obtenerPorId(int idUsuario) throws SQLException {
+        String sql = "SELECT * FROM usuarios WHERE id_usuario = ?";
+
+        try ( Connection conn = ConexionDB.getConnection();  PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, idUsuario);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                return mapearUsuario(rs);
+            }
+            return null;
+        }
+    }
+
     public List<Usuario> obtenerTodos() throws SQLException {
         List<Usuario> usuarios = new ArrayList<>();
-        String sql = "SELECT * FROM usuarios WHERE activo = TRUE ORDER BY fecha_creacion DESC";
-        
-        try (Connection conn = ConexionDB.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            
+        String sql = "SELECT * FROM usuarios WHERE activo = 1 ORDER BY fecha_creacion DESC";
+
+        try ( Connection conn = ConexionDB.getConnection();  Statement stmt = conn.createStatement();  ResultSet rs = stmt.executeQuery(sql)) {
+
             while (rs.next()) {
                 usuarios.add(mapearUsuario(rs));
             }
         }
         return usuarios;
     }
-    
+
     public boolean existeUsername(String username) throws SQLException {
-        String sql = "SELECT COUNT(*) as count FROM usuarios WHERE username = ?";
-        
-        try (Connection conn = ConexionDB.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
+        String sql = "SELECT COUNT(*) as count FROM usuarios WHERE username = ? AND activo = 1";
+
+        try ( Connection conn = ConexionDB.getConnection();  PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
-            
+
             if (rs.next()) {
                 return rs.getInt("count") > 0;
             }
             return false;
         }
     }
-    
+
     private Usuario mapearUsuario(ResultSet rs) throws SQLException {
         Usuario usuario = new Usuario();
         usuario.setIdUsuario(rs.getInt("id_usuario"));

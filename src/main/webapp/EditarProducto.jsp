@@ -59,6 +59,8 @@
     </head>
     <body>
         <div class="container">
+            <!-- INCLUIR NAVBAR -->
+            <%@include file="navbar.jsp" %>
             <h2>Modificar Productos</h2>
             <p class="subtitle">Actualice la información de los productos existentes</p>
 
@@ -117,7 +119,8 @@
             <!-- Formulario de edición -->
             <div style="background: #f8f9fa; padding: 25px; border-radius: 8px; border: 1px solid #dee2e6;">
                 <h3 style="color: #2c5530; margin-bottom: 20px; text-align: center;">Formulario de Modificación</h3>
-                <form action="SvEditarProducto" method="POST" class="form-simple" id="editarProductoForm" onsubmit="return false;">
+                <form action="SvEditarProducto" method="POST" class="form-simple" id="editarProductoForm">
+
                     <div class="form-group">
                         <label for="id_producto" class="form-label">ID del producto a modificar:</label>
                         <input type="number" name="id_producto" id="id_producto" class="form-input" required />
@@ -294,11 +297,11 @@
                             return; // detener en el primer error
                         }
                     }
-
-                    if (!verificarCamposModificados()) {
-                        alert("Debes modificar al menos un campo además del ID del producto.");
-                        return;
-                    }
+                    /*
+                     if (!verificarCamposModificados()) {
+                     alert("Debes modificar al menos un campo además del ID del producto.");
+                     return;
+                     }*/
 
                     if (!hayErrores) {
                         form.submit();

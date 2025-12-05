@@ -26,6 +26,8 @@
     </head>
     <body>
         <div class="container">
+            <!-- INCLUIR NAVBAR -->
+            <%@include file="navbar.jsp" %>
             <h2>Inventario de Productos</h2>
             <p class="subtitle">Catálogo completo de productos disponibles en la tienda</p>
 

@@ -59,6 +59,8 @@
     </head>
     <body>
         <div class="container">
+            <!-- INCLUIR NAVBAR -->
+            <%@include file="navbar.jsp" %>
             <h2>Agregar Nuevo Producto</h2>
             <p class="subtitle">Complete todos los campos para registrar un nuevo producto</p>
 

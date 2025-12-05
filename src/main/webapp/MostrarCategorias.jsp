@@ -27,6 +27,8 @@
     </head>
     <body>
         <div class="container">
+            <!-- INCLUIR NAVBAR -->
+            <%@include file="navbar.jsp" %>
             <h2>Catálogo de Categorías</h2>
             <p class="subtitle">Lista completa de categorías disponibles en el sistema</p>
 
@@ -56,8 +58,8 @@
                 </thead>
                 <tbody>
                     <%
-                        for (Categoria categoria : lista_categorias) {
-                    %>
+    for (Categoria categoria : lista_categorias) {
+                   %>
                     <tr>
                         <td><%= categoria.getIdCategoria()%></td>
                         <td><strong><%= categoria.getNombreCategoria()%></strong></td>

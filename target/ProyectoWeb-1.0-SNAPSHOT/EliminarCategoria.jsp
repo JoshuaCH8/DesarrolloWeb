@@ -23,6 +23,8 @@
     </head>
     <body>
         <div class="container">
+            <!-- INCLUIR NAVBAR -->
+            <%@include file="navbar.jsp" %>
             <h2>Eliminar Categorías</h2>
             <p class="subtitle">Seleccione la categoría que desea eliminar del sistema</p>
 

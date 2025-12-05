@@ -57,6 +57,8 @@
     </head>
     <body>
         <div class="container">
+            <!-- INCLUIR NAVBAR -->
+            <%@include file="navbar.jsp" %>
             <h2>Modificar Categorías</h2>
             <p class="subtitle">Actualice la información de las categorías existentes</p>
 

@@ -146,20 +146,22 @@ public class ProductoDAO {
         Producto producto = null;
         String sql = "SELECT * FROM productos WHERE id_producto = ? AND estado = 1";
 
-        try ( Connection conn = ConexionDB.getConnection();  PreparedStatement ps = conn.prepareStatement(sql);  ResultSet rs = ps.executeQuery();) {
+        try ( Connection conn = ConexionDB.getConnection();  PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setInt(1, idProducto);
-
-            if (rs.next()) {
-                producto = new Producto();
-                producto.setIdProducto(rs.getInt("id_producto"));
-                producto.setNombreProducto(rs.getString("nombre_producto"));
-                producto.setPrecioProducto(rs.getBigDecimal("precio_producto"));
-                producto.setCantidadProducto(rs.getInt("cantidad_producto"));
-                producto.setCodigoBarras(rs.getString("codigo_barras"));
-                producto.setCategoriaId(rs.getInt("categoria_id"));
-                producto.setDescripcion(rs.getString("descripcion"));
+            ps.setInt(1, idProducto); // ✅ Primero asignamos el parámetro
+            try ( ResultSet rs = ps.executeQuery()) { // ✅ Luego ejecutamos
+                if (rs.next()) {
+                    producto = new Producto();
+                    producto.setIdProducto(rs.getInt("id_producto"));
+                    producto.setNombreProducto(rs.getString("nombre_producto"));
+                    producto.setPrecioProducto(rs.getBigDecimal("precio_producto"));
+                    producto.setCantidadProducto(rs.getInt("cantidad_producto"));
+                    producto.setCodigoBarras(rs.getString("codigo_barras"));
+                    producto.setCategoriaId(rs.getInt("categoria_id"));
+                    producto.setDescripcion(rs.getString("descripcion"));
+                }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
