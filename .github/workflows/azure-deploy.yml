@@ -3,7 +3,6 @@ name: Deploy Java App to Azure Web App
 on:
   push:
     branches: [ "master" ]
-  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -29,7 +28,7 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'tienda-joshua-hzgwf6afhjdmdbaz'
+          app-name: 'tienda-joshua'  # ← CAMBIA ESTO
           slot-name: 'production'
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: 'target/*.war'
